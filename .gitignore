@@ -1,8 +1,17 @@
+## User settings
 xcuserdata/
+
+build/
+DerivedData/
+
+Pods/
+Carthage/Build/
 
 ## Xcode 8 and earlier
 *.xcscmblueprint
 *.xccheckout
+.DS_Store
+*.swp
 
 ### Xcode Patch ###
 *.xcodeproj/*
@@ -11,4 +20,4 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
-
+*xcworkspace/xcuserdata/*
