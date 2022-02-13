@@ -7,30 +7,29 @@
 
 import SwiftUI
 
-struct MainListView: View {
+struct StockRowView: View {
     @Binding var stock: Stock
 
     private var warning: Bool {
-        stock.amount <= stock.limit
+        stock.amount < stock.limit
     }
 
     var body: some View {
         HStack {
-            if warning {
-                Image(systemName: "exclamationmark.circle")
-                    .padding(.trailing)
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(.red)
-            }
             VStack(alignment: .leading) {
+                Spacer()
                 Text(stock.title)
-                    .font(.system(size: 24))
+                    .font(.system(size: 18))
                     .lineLimit(nil)
                     .padding(EdgeInsets(top: 0,
                                         leading: 0,
                                         bottom: 8,
                                         trailing: 0))
-                Text(stock.memo)
+                Spacer()
+                Text(stock.memo ?? "")
+                    .font(.system(size: 14))
+                    .lineLimit(nil)
+                Spacer()
             }
             Spacer()
             Text("\(stock.amount)")
@@ -48,7 +47,7 @@ struct MainListView: View {
                 }
                 .padding(EdgeInsets(top: 0,
                                     leading: 0,
-                                    bottom: 16,
+                                    bottom: 8,
                                     trailing: 0))
                 Button(action: {}) {
                     Image(systemName: "minus.square")
@@ -67,16 +66,16 @@ struct MainListView: View {
             }
         }
         .padding()
-        .background(Color.bgwhite)
+        .background(warning ? Color.yellow : Color.bgwhite)
         .cornerRadius(16)
-        .listRowInsets(.init())
-        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+        .listRowSeparator(.hidden)
+        .listRowBackground(Color.clear)
     }
 }
 
 struct MainListView_Previews: PreviewProvider {
     static var previews: some View {
-        MainListView(stock: .constant(Stock.sample()[0]))
+        StockRowView(stock: .constant(Stock.sample()[0]))
             .previewLayout(.fixed(width: 400, height: 150))
     }
 }

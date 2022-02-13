@@ -7,22 +7,21 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct StockView: View {
     @Binding var stocks: [Stock]
     
     var body: some View {
         List {
             ForEach($stocks) { $stock in
-                MainListView(stock: $stock)
+                StockRowView(stock: $stock)
             }
         }
         .navigationTitle("ストック一覧")
-        .background(Color.red)
     }
 }
 
-struct MainView_Previews: PreviewProvider {
+struct StockView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(stocks: .constant(Stock.sample()))
+        StockView(stocks: .constant(Stock.sample()))
     }
 }

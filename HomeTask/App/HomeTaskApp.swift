@@ -16,7 +16,7 @@ struct HomeTaskApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                MainView(stocks: $stocks)
+                StockView(stocks: $stocks)
             }
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
