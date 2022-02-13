@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E36B59FF27B8AD9500224BD7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B59FE27B8AD9500224BD7 /* MainView.swift */; };
+		E36B5A0227B8ADFA00224BD7 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B5A0127B8ADFA00224BD7 /* Stock.swift */; };
 		E3FF5C2427B7811100B21B90 /* HomeTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C2327B7811100B21B90 /* HomeTaskApp.swift */; };
 		E3FF5C2627B7811100B21B90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C2527B7811100B21B90 /* ContentView.swift */; };
 		E3FF5C2827B7811100B21B90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FF5C2727B7811100B21B90 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 		E3FF5C3A27B7811200B21B90 /* HomeTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C3927B7811200B21B90 /* HomeTaskTests.swift */; };
 		E3FF5C4427B7811200B21B90 /* HomeTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C4327B7811200B21B90 /* HomeTaskUITests.swift */; };
 		E3FF5C4627B7811200B21B90 /* HomeTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C4527B7811200B21B90 /* HomeTaskUITestsLaunchTests.swift */; };
+		E3FF5C5627B89B6C00B21B90 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C5527B89B6C00B21B90 /* MainListView.swift */; };
+		E3FF5C5A27B8A33A00B21B90 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C5927B8A33A00B21B90 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E36B59FE27B8AD9500224BD7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E36B5A0127B8ADFA00224BD7 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		E3FF5C2027B7811100B21B90 /* HomeTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FF5C2327B7811100B21B90 /* HomeTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTaskApp.swift; sourceTree = "<group>"; };
 		E3FF5C2527B7811100B21B90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +54,8 @@
 		E3FF5C3F27B7811200B21B90 /* HomeTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FF5C4327B7811200B21B90 /* HomeTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTaskUITests.swift; sourceTree = "<group>"; };
 		E3FF5C4527B7811200B21B90 /* HomeTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E3FF5C5527B89B6C00B21B90 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
+		E3FF5C5927B8A33A00B21B90 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E36B5A0027B8ADD300224BD7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E3FF5C2327B7811100B21B90 /* HomeTaskApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		E3FF5C1727B7811100B21B90 = {
 			isa = PBXGroup;
 			children = (
@@ -98,11 +114,12 @@
 		E3FF5C2227B7811100B21B90 /* HomeTask */ = {
 			isa = PBXGroup;
 			children = (
-				E3FF5C2327B7811100B21B90 /* HomeTaskApp.swift */,
+				E36B5A0027B8ADD300224BD7 /* App */,
+				E3FF5C5827B8A31100B21B90 /* Resource */,
 				E3FF5C2527B7811100B21B90 /* ContentView.swift */,
-				E3FF5C2727B7811100B21B90 /* Assets.xcassets */,
-				E3FF5C2C27B7811100B21B90 /* Persistence.swift */,
-				E3FF5C2E27B7811100B21B90 /* HomeTask.xcdatamodeld */,
+				E3FF5C5227B89AC300B21B90 /* Entity */,
+				E3FF5C5327B89ACB00B21B90 /* Model */,
+				E3FF5C5427B89AD900B21B90 /* Presentation */,
 				E3FF5C2927B7811100B21B90 /* Preview Content */,
 			);
 			path = HomeTask;
@@ -131,6 +148,49 @@
 				E3FF5C4527B7811200B21B90 /* HomeTaskUITestsLaunchTests.swift */,
 			);
 			path = HomeTaskUITests;
+			sourceTree = "<group>";
+		};
+		E3FF5C5227B89AC300B21B90 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E3FF5C2E27B7811100B21B90 /* HomeTask.xcdatamodeld */,
+				E3FF5C2C27B7811100B21B90 /* Persistence.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		E3FF5C5327B89ACB00B21B90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E36B5A0127B8ADFA00224BD7 /* Stock.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E3FF5C5427B89AD900B21B90 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E3FF5C5727B89B7700B21B90 /* Main */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E3FF5C5727B89B7700B21B90 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E3FF5C5527B89B6C00B21B90 /* MainListView.swift */,
+				E36B59FE27B8AD9500224BD7 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E3FF5C5827B8A31100B21B90 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E3FF5C2727B7811100B21B90 /* Assets.xcassets */,
+				E3FF5C5927B8A33A00B21B90 /* Theme.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +323,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3FF5C5627B89B6C00B21B90 /* MainListView.swift in Sources */,
+				E36B59FF27B8AD9500224BD7 /* MainView.swift in Sources */,
 				E3FF5C2D27B7811100B21B90 /* Persistence.swift in Sources */,
 				E3FF5C3027B7811100B21B90 /* HomeTask.xcdatamodeld in Sources */,
+				E36B5A0227B8ADFA00224BD7 /* Stock.swift in Sources */,
+				E3FF5C5A27B8A33A00B21B90 /* Theme.swift in Sources */,
 				E3FF5C2627B7811100B21B90 /* ContentView.swift in Sources */,
 				E3FF5C2427B7811100B21B90 /* HomeTaskApp.swift in Sources */,
 			);
