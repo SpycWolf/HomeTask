@@ -27,8 +27,8 @@ struct Stock: Identifiable, Codable {
 
 extension Stock {
     static func sample() -> [Stock] {
-        [Stock(title: "トイレットペーパー", memo: "2倍巻き、無香料", amount: 2, limit: 3),
-         Stock(title: "シャンプー", memo: nil, amount: 1, limit: 0),
+        [Stock(title: "トイレットペーパートイレットペーパートイレットペーパー", memo: "2倍巻き、無香料", amount: 2, limit: 3),
+         Stock(title: "シャンプー", memo: nil, amount: 1, limit: 2),
          Stock(title: "ボディソープ", memo: "泡タイプ、オイルインのもの", amount: 3, limit: 1),
          Stock(title: "ティッシュ", memo: "薄型ボックス", amount: 6, limit: 2),
          Stock(title: "目薬", memo: nil, amount: 3, limit: 3),

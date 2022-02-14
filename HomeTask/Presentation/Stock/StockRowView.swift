@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct StockRowView: View {
-    @Binding var stock: Stock
-
+    let stock: Stock
+    
+    var incrementAction: () -> Void
+    var decrementAction: () -> Void
+    var addBagAction: () -> Void
+    
     private var warning: Bool {
         stock.amount < stock.limit
     }
-
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -40,42 +44,51 @@ struct StockRowView: View {
                                     bottom: 0,
                                     trailing: 16))
             VStack {
-                Button(action: {}) {
+                Button(action: incrementAction) {
                     Image(systemName: "plus.square")
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.black)
                 }
+                .buttonStyle(.borderless)
                 .padding(EdgeInsets(top: 0,
                                     leading: 0,
                                     bottom: 8,
                                     trailing: 0))
-                Button(action: {}) {
+                Button(action: decrementAction) {
                     Image(systemName: "minus.square")
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.black)
                 }
+                .buttonStyle(.borderless)
             }
             .padding(EdgeInsets(top: 0,
                                 leading: 0,
                                 bottom: 0,
                                 trailing: 16))
-            Button(action: {}) {
+            Button(action: addBagAction) {
                 Image(systemName: "bag.badge.plus")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.black)
             }
+            .buttonStyle(.borderless)
         }
         .padding()
         .background(warning ? Color.yellow : Color.bgwhite)
-        .cornerRadius(16)
         .listRowSeparator(.hidden)
-        .listRowBackground(Color.clear)
+        .listRowInsets(EdgeInsets(top: 8,
+                                  leading: 0,
+                                  bottom: 8,
+                                  trailing: 0))
+        .cornerRadius(8)
     }
 }
 
 struct MainListView_Previews: PreviewProvider {
     static var previews: some View {
-        StockRowView(stock: .constant(Stock.sample()[0]))
+        StockRowView(stock: Stock.sample()[0],
+                     incrementAction: {},
+                     decrementAction: {},
+                     addBagAction: {})
             .previewLayout(.fixed(width: 400, height: 150))
     }
 }

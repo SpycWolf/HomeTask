@@ -9,17 +9,11 @@ import SwiftUI
 
 @main
 struct HomeTaskApp: App {
-    @State var stocks = Stock.sample()
-
-//    let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                StockView(stocks: $stocks)
+                StockView(viewModel: .init())
             }
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
