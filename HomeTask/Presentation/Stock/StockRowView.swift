@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StockRowView: View {
-    let stock: Stock
+    let stock: StockModel
     
     var incrementAction: () -> Void
     var decrementAction: () -> Void
@@ -85,7 +85,7 @@ struct StockRowView: View {
 
 struct MainListView_Previews: PreviewProvider {
     static var previews: some View {
-        StockRowView(stock: Stock.sample()[0],
+        StockRowView(stock: StockModel.sample()[0],
                      incrementAction: {},
                      decrementAction: {},
                      addBagAction: {})

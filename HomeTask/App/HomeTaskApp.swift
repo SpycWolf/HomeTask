@@ -9,10 +9,14 @@ import SwiftUI
 
 @main
 struct HomeTaskApp: App {
+    let persistenceController = PersistenceController.shared
+
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 StockView(viewModel: .init())
+//                    .environment(\.managedObjectContext,
+//                                  persistenceController.container.viewContext)
             }
         }
     }

@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import CoreData
+import SwiftUI
 
 class StockViewModel: ObservableObject {
-    @Published private(set) var stocks: [Stock] = []
+    private let useCase: StockUseCase = StockUseCaseImpl(repository: StockRepositoryImpl())
+    
+    @Published private(set) var stocks: [StockModel] = []
     
     func onAppear() {
-        stocks = Stock.sample()
+        stocks = useCase.stocks()
     }
     
     func increment() {
