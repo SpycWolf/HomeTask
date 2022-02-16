@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct StockRowView: View {
-    let stock: Stock
+    let stock: StockModel
     
     var incrementAction: () -> Void
     var decrementAction: () -> Void
     var addBagAction: () -> Void
     
     private var warning: Bool {
-        stock.amount < stock.limit
+        stock.amount < Int(stock.limit)
     }
     
     var body: some View {
@@ -30,7 +30,7 @@ struct StockRowView: View {
                                         bottom: 8,
                                         trailing: 0))
                 Spacer()
-                Text(stock.memo ?? "")
+                Text(stock.memo)
                     .font(.system(size: 14))
                     .lineLimit(nil)
                 Spacer()
@@ -85,7 +85,7 @@ struct StockRowView: View {
 
 struct MainListView_Previews: PreviewProvider {
     static var previews: some View {
-        StockRowView(stock: Stock.sample()[0],
+        StockRowView(stock: StockModel.sample()[0],
                      incrementAction: {},
                      decrementAction: {},
                      addBagAction: {})
