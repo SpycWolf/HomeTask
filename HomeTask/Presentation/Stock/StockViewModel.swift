@@ -18,12 +18,24 @@ class StockViewModel: ObservableObject {
         stocks = useCase.stocks()
     }
     
-    func increment() {
-        print("called increment")
+    func addStock(title: String, memo: String?, amount: Int, limit: Int) {
+        useCase.add(title: title, memo: memo, amount: amount, limit: limit)
     }
     
-    func decrement() {
-        print("called decrement")
+    func deleteStock(stock: StockModel) {
+        useCase.delete(id: stock.id)
+    }
+    
+    func increment(stock: StockModel) {
+        useCase.increment(id: stock.id)
+    }
+    
+    func decrement(stock: StockModel) {
+        useCase.delete(id: stock.id)
+    }
+    
+    func update(stock: StockModel) {
+        useCase.update(stock: stock)
     }
     
     func addBag() {

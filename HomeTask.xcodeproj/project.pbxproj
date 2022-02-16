@@ -16,11 +16,11 @@
 		E36B5A1227BB496600224BD7 /* StockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B5A1127BB496600224BD7 /* StockUseCase.swift */; };
 		E36B5A1527BB4D7B00224BD7 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B5A1427BB4D7B00224BD7 /* Translator.swift */; };
 		E36B5A1727BB4DA800224BD7 /* StockTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B5A1627BB4DA800224BD7 /* StockTranslator.swift */; };
+		E36B5A2027BB7B3800224BD7 /* HomeTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E36B5A1E27BB7B3800224BD7 /* HomeTask.xcdatamodeld */; };
 		E3FF5C2427B7811100B21B90 /* HomeTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C2327B7811100B21B90 /* HomeTaskApp.swift */; };
 		E3FF5C2827B7811100B21B90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FF5C2727B7811100B21B90 /* Assets.xcassets */; };
 		E3FF5C2B27B7811100B21B90 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FF5C2A27B7811100B21B90 /* Preview Assets.xcassets */; };
 		E3FF5C2D27B7811100B21B90 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C2C27B7811100B21B90 /* Persistence.swift */; };
-		E3FF5C3027B7811100B21B90 /* HomeTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C2E27B7811100B21B90 /* HomeTask.xcdatamodeld */; };
 		E3FF5C3A27B7811200B21B90 /* HomeTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C3927B7811200B21B90 /* HomeTaskTests.swift */; };
 		E3FF5C4427B7811200B21B90 /* HomeTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C4327B7811200B21B90 /* HomeTaskUITests.swift */; };
 		E3FF5C4627B7811200B21B90 /* HomeTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF5C4527B7811200B21B90 /* HomeTaskUITestsLaunchTests.swift */; };
@@ -55,12 +55,12 @@
 		E36B5A1127BB496600224BD7 /* StockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockUseCase.swift; sourceTree = "<group>"; };
 		E36B5A1427BB4D7B00224BD7 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
 		E36B5A1627BB4DA800224BD7 /* StockTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTranslator.swift; sourceTree = "<group>"; };
+		E36B5A1F27BB7B3800224BD7 /* HomeTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeTask.xcdatamodel; sourceTree = "<group>"; };
 		E3FF5C2027B7811100B21B90 /* HomeTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FF5C2327B7811100B21B90 /* HomeTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTaskApp.swift; sourceTree = "<group>"; };
 		E3FF5C2727B7811100B21B90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3FF5C2A27B7811100B21B90 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E3FF5C2C27B7811100B21B90 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		E3FF5C2F27B7811100B21B90 /* HomeTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HomeTask.xcdatamodel; sourceTree = "<group>"; };
 		E3FF5C3527B7811200B21B90 /* HomeTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FF5C3927B7811200B21B90 /* HomeTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTaskTests.swift; sourceTree = "<group>"; };
 		E3FF5C3F27B7811200B21B90 /* HomeTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,7 +159,7 @@
 		E36B5A1827BB4E7D00224BD7 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				E3FF5C2E27B7811100B21B90 /* HomeTask.xcdatamodeld */,
+				E36B5A1E27BB7B3800224BD7 /* HomeTask.xcdatamodeld */,
 				E3FF5C2C27B7811100B21B90 /* Persistence.swift */,
 			);
 			path = Persistence;
@@ -402,12 +402,12 @@
 				E36B5A1227BB496600224BD7 /* StockUseCase.swift in Sources */,
 				E36B5A1527BB4D7B00224BD7 /* Translator.swift in Sources */,
 				E36B5A1727BB4DA800224BD7 /* StockTranslator.swift in Sources */,
+				E36B5A2027BB7B3800224BD7 /* HomeTask.xcdatamodeld in Sources */,
 				E3FF5C5627B89B6C00B21B90 /* StockRowView.swift in Sources */,
 				E36B5A0C27BB41D100224BD7 /* StockEntityExtension.swift in Sources */,
 				E36B59FF27B8AD9500224BD7 /* StockView.swift in Sources */,
 				E36B5A1027BB478F00224BD7 /* StockRepositoy.swift in Sources */,
 				E3FF5C2D27B7811100B21B90 /* Persistence.swift in Sources */,
-				E3FF5C3027B7811100B21B90 /* HomeTask.xcdatamodeld in Sources */,
 				E36B5A0227B8ADFA00224BD7 /* StockModel.swift in Sources */,
 				E3FF5C5A27B8A33A00B21B90 /* Theme.swift in Sources */,
 				E3FF5C2427B7811100B21B90 /* HomeTaskApp.swift in Sources */,
@@ -498,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -553,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -743,12 +743,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E3FF5C2E27B7811100B21B90 /* HomeTask.xcdatamodeld */ = {
+		E36B5A1E27BB7B3800224BD7 /* HomeTask.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E3FF5C2F27B7811100B21B90 /* HomeTask.xcdatamodel */,
+				E36B5A1F27BB7B3800224BD7 /* HomeTask.xcdatamodel */,
 			);
-			currentVersion = E3FF5C2F27B7811100B21B90 /* HomeTask.xcdatamodel */;
+			currentVersion = E36B5A1F27BB7B3800224BD7 /* HomeTask.xcdatamodel */;
 			path = HomeTask.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

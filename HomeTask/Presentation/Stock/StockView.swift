@@ -14,8 +14,8 @@ struct StockView: View {
         List {
             ForEach(viewModel.stocks) { stock in
                 StockRowView(stock: stock,
-                             incrementAction: viewModel.increment,
-                             decrementAction: viewModel.decrement,
+                             incrementAction: { viewModel.increment(stock: stock) },
+                             decrementAction: { viewModel.decrement(stock: stock) },
                              addBagAction: viewModel.addBag)
             }
         }
