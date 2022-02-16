@@ -10,7 +10,7 @@ import CoreData
 import SwiftUI
 
 class StockViewModel: ObservableObject {
-    private let useCase: StockUseCase = StockUseCaseImpl(repository: StockRepositoryImpl())
+    private let useCase: StockUseCase = StockUseCaseImpl(repository: StockRepositoryImpl.shared)
     
     @Published private(set) var stocks: [StockModel] = []
     
@@ -18,8 +18,9 @@ class StockViewModel: ObservableObject {
         stocks = useCase.stocks()
     }
     
-    func addStock(title: String, memo: String?, amount: Int, limit: Int) {
-        useCase.add(title: title, memo: memo, amount: amount, limit: limit)
+    func addStock(stock: StockModel) {
+        useCase.add(title: stock.title, memo: stock.memo, amount: 0, limit: Int(stock.limit))
+        stocks = useCase.stocks()
     }
     
     func deleteStock(stock: StockModel) {

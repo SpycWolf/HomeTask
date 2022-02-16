@@ -11,9 +11,9 @@ struct StockTranslator: Translator {
     func translate(_ entity: StockEntity) -> StockModel {
         StockModel(id: entity.id ?? UUID(),
                    title: entity.title ?? "",
-                   memo: entity.memo,
+                   memo: entity.memo ?? "",
                    amount: Int(entity.amount),
-                   limit: Int(entity.limit),
+                   limit: Double(entity.limit),
                    date: entity.date ?? Date())
     }
 }

@@ -75,7 +75,7 @@ extension StockEntity {
         save()
     }
     
-    static func update(id: UUID, title: String, memo: String?, amount: Int, limit: Int) {
+    static func update(id: UUID, title: String, memo: String?, amount: Int, limit: Double) {
         guard let stock = find(by: id) else { return }
         stock.title = title
         stock.memo = memo
