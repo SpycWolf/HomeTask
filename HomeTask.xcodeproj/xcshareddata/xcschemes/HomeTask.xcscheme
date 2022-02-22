@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E3FF5C1F27B7811100B21B90"
-               BuildableName = "HomeTask.app"
+               BuildableName = "StockTask.app"
                BlueprintName = "HomeTask"
                ReferencedContainer = "container:HomeTask.xcodeproj">
             </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3FF5C1F27B7811100B21B90"
-            BuildableName = "HomeTask.app"
+            BuildableName = "StockTask.app"
             BlueprintName = "HomeTask"
             ReferencedContainer = "container:HomeTask.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E3FF5C1F27B7811100B21B90"
-            BuildableName = "HomeTask.app"
+            BuildableName = "StockTask.app"
             BlueprintName = "HomeTask"
             ReferencedContainer = "container:HomeTask.xcodeproj">
          </BuildableReference>
