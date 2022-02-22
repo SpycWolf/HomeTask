@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StockEditView: View {
-    @Binding var stock: StockModel.Data
+    @Binding var stock: StockModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,7 +20,7 @@ struct StockEditView: View {
                     .font(.system(size: 10))
                 Spacer()
             }
-            TextField("商品タイトル", text: $stock.title)
+            TextField("品名", text: $stock.title)
                 .font(.system(size: 16))
                 .padding()
                 .background(Color.bgwhite)
@@ -30,7 +30,7 @@ struct StockEditView: View {
             Text("メモ")
                 .font(.system(size: 18))
                 .leftAligned()
-            TextField("商品メモ", text: $stock.memo)
+            TextField("メモ", text: $stock.memo)
                 .font(.system(size: 16))
                 .padding()
                 .background(Color.bgwhite)
@@ -59,7 +59,7 @@ struct StockEditView: View {
             }
             Spacer()
         }
-        .padding(EdgeInsets(top: 16,
+        .padding(EdgeInsets(top: 0,
                             leading: 16,
                             bottom: 0,
                             trailing: 16))
@@ -68,6 +68,6 @@ struct StockEditView: View {
 
 struct StockEditView_Previews: PreviewProvider {
     static var previews: some View {
-        StockEditView(stock: .constant(StockModel.sample()[0].data))
+        StockEditView(stock: .constant(StockModel.sample()[0]))
     }
 }

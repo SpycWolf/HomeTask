@@ -9,11 +9,10 @@ import Foundation
 
 protocol StockDataStore {
     func fetchAllStocks() -> [StockEntity]
-    func addNewStock(title: String, memo: String?, amount: Int, limit: Int)
+    func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double)
     func deleteStock(id: UUID)
     func incrementAmount(id: UUID)
     func decrementAmount(id: UUID)
-    func update(id: UUID, title: String, memo: String?, amount: Int, limit: Double)
 }
 
 struct StockDataStoreImpl: StockDataStore {
@@ -21,10 +20,10 @@ struct StockDataStoreImpl: StockDataStore {
         return StockEntity.fetchAll()
     }
     
-    func addNewStock(title: String, memo: String?, amount: Int, limit: Int) {
-        StockEntity.newStock(title: title, memo: memo, amount: amount, limit: limit)
+    func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double) {
+        StockEntity.createOrUpdate(id: id, title: title, memo: memo, amount: amount, limit: limit)
     }
-    
+
     func deleteStock(id: UUID) {
         StockEntity.deleteStock(id: id)
     }
@@ -36,10 +35,7 @@ struct StockDataStoreImpl: StockDataStore {
     func decrementAmount(id: UUID) {
         StockEntity.decrement(id: id)
     }
-    
-    func update(id: UUID, title: String, memo: String?, amount: Int, limit: Double) {
-        StockEntity.update(id: id, title: title, memo: memo, amount: amount, limit: limit)
-    }
+
 }
 
 struct StockDataStoreFactory {

@@ -15,6 +15,15 @@ struct StockModel: Identifiable, Codable {
     var limit: Double
     var date: Date
     
+    init() {
+        self.id = UUID()
+        self.title = ""
+        self.memo = ""
+        self.amount = 0
+        self.limit = 0
+        self.date = Date()
+    }
+    
     init(id: UUID = UUID(), title: String, memo: String, amount: Int, limit: Double, date: Date = Date()) {
         self.id = id
         self.title = title

@@ -15,7 +15,7 @@ struct StockRowView: View {
     var addBagAction: () -> Void
     
     private var warning: Bool {
-        stock.amount < Int(stock.limit)
+        stock.amount <= Int(stock.limit)
     }
     
     var body: some View {

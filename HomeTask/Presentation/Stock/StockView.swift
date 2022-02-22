@@ -11,22 +11,25 @@ struct StockView: View {
     @ObservedObject var viewModel: StockViewModel
     
     @State private var isPresentingNewScrumView = false
-    @State private var stockData = StockModel.Data()
+    @State private var stockData = StockModel()
     
     var body: some View {
         List {
             if viewModel.stocks.isEmpty {
                 StockEmptyRow()
             }
-            ForEach(viewModel.stocks) { stock in
-                NavigationLink(destination: StockDetailView(stock: stock.data,
-                                                            editAction: {},
-                                                            deleteAction: {})) {
-                    StockRowView(stock: stock,
-                                 incrementAction: { viewModel.increment(stock: stock) },
-                                 decrementAction: { viewModel.decrement(stock: stock) },
-                                 addBagAction: viewModel.addBag)
-                }
+            ForEach($viewModel.stocks) { $stock in
+                StockRowView(stock: stock,
+                             incrementAction: { viewModel.increment(stock: stock) },
+                             decrementAction: { viewModel.decrement(stock: stock) },
+                             addBagAction: viewModel.addBag)
+                    .onTapGesture {
+                        stockData = stock
+                        isPresentingNewScrumView = true
+                    }
+            }
+            .onDelete { indexSet in
+                viewModel.deleteStock(indexSet: indexSet)
             }
         }
         .navigationTitle("ストック一覧")
@@ -44,13 +47,12 @@ struct StockView: View {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("閉じる") {
                                 isPresentingNewScrumView = false
-                                stockData = StockModel.Data()
+                                stockData = viewModel.newStock()
                             }
                         }
                         ToolbarItem(placement: .confirmationAction) {
-                            Button("追加") {
-                                let newStock = StockModel(data: stockData)
-                                viewModel.addStock(stock: newStock)
+                            Button("保存") {
+                                viewModel.add(stock: stockData)
                                 isPresentingNewScrumView = false
                             }
                         }

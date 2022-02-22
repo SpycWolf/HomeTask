@@ -10,36 +10,44 @@ import CoreData
 import SwiftUI
 
 class StockViewModel: ObservableObject {
+    @Published var stocks: [StockModel] = []
+    
     private let useCase: StockUseCase = StockUseCaseImpl(repository: StockRepositoryImpl.shared)
     
-    @Published private(set) var stocks: [StockModel] = []
-    
     func onAppear() {
-        stocks = useCase.stocks()
+        fetchStocks()
     }
     
-    func addStock(stock: StockModel) {
-        useCase.add(title: stock.title, memo: stock.memo, amount: 0, limit: Int(stock.limit))
-        stocks = useCase.stocks()
+    func newStock() -> StockModel {
+        StockModel()
     }
     
-    func deleteStock(stock: StockModel) {
-        useCase.delete(id: stock.id)
+    func add(stock: StockModel) {
+        useCase.createOrUpdate(id: stock.id, title: stock.title, memo: stock.memo, amount: stock.amount, limit: stock.limit)
+        fetchStocks()
+    }
+    
+    func deleteStock(indexSet: IndexSet) {
+        guard let index = indexSet.first, stocks.indices.contains(index) else { return }
+        useCase.delete(id: stocks[index].id)
+        fetchStocks()
     }
     
     func increment(stock: StockModel) {
         useCase.increment(id: stock.id)
+        fetchStocks()
     }
     
     func decrement(stock: StockModel) {
-        useCase.delete(id: stock.id)
-    }
-    
-    func update(stock: StockModel) {
-        useCase.update(stock: stock)
+        useCase.decrement(id: stock.id)
+        fetchStocks()
     }
     
     func addBag() {
         print("called addBag")
+    }
+    
+    private func fetchStocks() {
+        stocks = useCase.stocks()
     }
 }
