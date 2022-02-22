@@ -9,11 +9,10 @@ import Foundation
 
 protocol StockRepository: AnyObject {
     func stocks() -> [StockEntity]
-    func add(title: String, memo: String?, amount: Int, limit: Int)
+    func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double)
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
-    func update(id: UUID, title: String, memo: String?, amount: Int, limit: Double)
 }
 
 class StockRepositoryImpl: StockRepository {
@@ -24,10 +23,10 @@ class StockRepositoryImpl: StockRepository {
         return dataStore.fetchAllStocks()
     }
     
-    func add(title: String, memo: String?, amount: Int, limit: Int) {
-        dataStore.addNewStock(title: title, memo: memo, amount: amount, limit: limit)
+    func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double) {
+        dataStore.createOrUpdate(id: id, title: title, memo: memo, amount: amount, limit: limit)
     }
-    
+
     func delete(id: UUID) {
         dataStore.deleteStock(id: id)
     }
@@ -39,8 +38,5 @@ class StockRepositoryImpl: StockRepository {
     func decrement(id: UUID) {
         dataStore.decrementAmount(id: id)
     }
-    
-    func update(id: UUID, title: String, memo: String?, amount: Int, limit: Double) {
-        dataStore.update(id: id, title: title, memo: memo, amount: amount, limit: limit)
-    }
+
 }

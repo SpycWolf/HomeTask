@@ -9,11 +9,10 @@ import Foundation
 
 protocol StockUseCase {
     func stocks() -> [StockModel]
-    func add(title: String, memo: String?, amount: Int, limit: Int)
+    func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double)
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
-    func update(stock: StockModel)
 }
 
 struct StockUseCaseImpl: StockUseCase {
@@ -27,8 +26,8 @@ struct StockUseCaseImpl: StockUseCase {
         repository.stocks().map { StockTranslator().translate($0) }
     }
     
-    func add(title: String, memo: String?, amount: Int, limit: Int) {
-        repository.add(title: title, memo: memo, amount: amount, limit: limit)
+    func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double) {
+        repository.createOrUpdate(id: id, title: title, memo: memo, amount: amount, limit: limit)
     }
     
     func delete(id: UUID) {
@@ -42,9 +41,5 @@ struct StockUseCaseImpl: StockUseCase {
     func decrement(id: UUID) {
         repository.decrement(id: id)
     }
-    
-    func update(stock: StockModel) {
-        repository.update(id: stock.id, title: stock.title,
-                          memo: stock.memo, amount: stock.amount, limit: stock.limit)
-    }
+
 }
