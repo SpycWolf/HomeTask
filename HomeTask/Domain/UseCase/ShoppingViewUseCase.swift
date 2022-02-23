@@ -13,6 +13,7 @@ protocol ShoppingViewUseCase {
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
+    func purchase(id: UUID, purchased: Bool)
 }
 
 struct ShoppingViewUseCaseImpl: ShoppingViewUseCase {
@@ -42,5 +43,43 @@ struct ShoppingViewUseCaseImpl: ShoppingViewUseCase {
     
     func decrement(id: UUID) {
         repository.decrement(id: id)
+    }
+    
+    func purchase(id: UUID, purchased: Bool) {
+        repository.purchase(id: id, purchased: purchased)
+    }
+}
+
+struct ShoppingPreViewUseCaseImpl: ShoppingViewUseCase {
+    private let repository: ShoppingRepository
+    private let stockUseCase = StockUseCaseImpl(repository: StockRepositoryImpl.shared)
+    
+    init(repository: ShoppingRepository) {
+        self.repository = repository
+    }
+    
+    func items() -> [ShoppingModel] {
+        ShoppingModel.sample()
+    }
+    
+    func createOrUpdate(id: UUID, amount: Int, stockId: UUID) {
+        let stock = stockUseCase.fetch(by: id)
+        repository.createOrUpdate(id: id, amount: amount, stockId: stockId, stock: stock)
+    }
+    
+    func delete(id: UUID) {
+        repository.delete(id: id)
+    }
+    
+    func increment(id: UUID) {
+        repository.increment(id: id)
+    }
+    
+    func decrement(id: UUID) {
+        repository.decrement(id: id)
+    }
+    
+    func purchase(id: UUID, purchased: Bool) {
+        repository.purchase(id: id, purchased: purchased)
     }
 }

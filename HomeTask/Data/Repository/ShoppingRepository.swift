@@ -13,6 +13,7 @@ protocol ShoppingRepository: AnyObject {
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
+    func purchase(id: UUID, purchased: Bool)
 }
 
 class ShoppingRepositoryImpl: ShoppingRepository {
@@ -39,4 +40,7 @@ class ShoppingRepositoryImpl: ShoppingRepository {
         dataStore.decrement(id: id)
     }
     
+    func purchase(id: UUID, purchased: Bool) {
+        dataStore.purchase(id: id, purchased: purchased)
+    }
 }

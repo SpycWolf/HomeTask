@@ -21,7 +21,7 @@ class ShoppingViewModel: ObservableObject {
         fetchItems()
     }
     
-    func deleteStock(indexSet: IndexSet) {
+    func deleteItem(indexSet: IndexSet) {
         guard let index = indexSet.first, items.indices.contains(index) else { return }
         useCase.delete(id: items[index].id)
         fetchItems()
@@ -34,6 +34,11 @@ class ShoppingViewModel: ObservableObject {
     
     func decrement(item: ShoppingModel) {
         useCase.decrement(id: item.id)
+        fetchItems()
+    }
+    
+    func purchase(item: ShoppingModel) {
+        useCase.purchase(id: item.id, purchased: !item.purchased)
         fetchItems()
     }
     

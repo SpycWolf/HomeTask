@@ -12,6 +12,7 @@ struct ShoppingTranslator: Translator {
         ShoppingModel(id: entity.id ?? UUID(),
                       amount: Int(entity.amount),
                       date: entity.date ?? Date(),
+                      purchased: entity.purchased,
                       stock: StockTranslator().translate(entity.stock ?? StockEntity()))
     }
 }

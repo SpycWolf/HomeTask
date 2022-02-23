@@ -4,6 +4,7 @@
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="purchased" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="stockId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="stock" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StockEntity" inverseName="shopping" inverseEntity="StockEntity"/>
     </entity>
@@ -17,7 +18,7 @@
         <relationship name="shopping" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShoppingEntity" inverseName="stock" inverseEntity="ShoppingEntity"/>
     </entity>
     <elements>
+        <element name="ShoppingEntity" positionX="212.8984375" positionY="-32.40625" width="128" height="119"/>
         <element name="StockEntity" positionX="-54" positionY="-54" width="128" height="148"/>
-        <element name="ShoppingEntity" positionX="212.8984375" positionY="-32.40625" width="128" height="103"/>
     </elements>
 </model>

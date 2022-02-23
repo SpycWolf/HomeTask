@@ -9,4 +9,7 @@ import SwiftUI
 
 extension Color {
     static let bgwhite = Color("bgwhite")
+    static let paleAle = Color("paleAle")
+    static let antiqueLace = Color("antiqueLace")
+    static let blueHijab = Color("blueHijab")
 }

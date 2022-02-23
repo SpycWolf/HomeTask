@@ -38,7 +38,7 @@ struct StockRowView: View {
             Spacer()
             Text("\(stock.amount)")
                 .font(.system(size: 32, weight: .heavy))
-                .foregroundColor(.orange)
+                .foregroundColor(.black)
                 .padding(EdgeInsets(top: 0,
                                     leading: 0,
                                     bottom: 0,
@@ -73,7 +73,7 @@ struct StockRowView: View {
             .buttonStyle(.borderless)
         }
         .padding()
-        .background(warning ? Color.yellow : Color.white)
+        .background(warning ? Color.antiqueLace : Color.blueHijab)
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
         .listRowInsets(EdgeInsets(top: 8,
