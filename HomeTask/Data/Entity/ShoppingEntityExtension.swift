@@ -42,20 +42,26 @@ extension ShoppingEntity {
     }
     
     static func delete(id: UUID) {
-        guard let stock = find(by: id) else { return }
-        context.delete(stock)
+        guard let item = find(by: id) else { return }
+        context.delete(item)
         save()
     }
     
     static func increment(id: UUID) {
-        guard let stock = find(by: id) else { return }
-        stock.amount += 1
+        guard let item = find(by: id) else { return }
+        item.amount += 1
         save()
     }
     
     static func decrement(id: UUID) {
-        guard let stock = find(by: id), stock.amount > 0 else { return }
-        stock.amount -= 1
+        guard let item = find(by: id), item.amount > 0 else { return }
+        item.amount -= 1
+        save()
+    }
+    
+    static func purchase(id: UUID, purchased: Bool) {
+        guard let item = find(by: id), item.amount > 0 else { return }
+        item.purchased = purchased
         save()
     }
     
@@ -72,6 +78,7 @@ extension ShoppingEntity {
         shopping.id = UUID()
         shopping.amount = Int16(amount)
         shopping.date = Date()
+        shopping.purchased = false
         shopping.stockId = stockId
         shopping.stock = stock
         context.insert(shopping)

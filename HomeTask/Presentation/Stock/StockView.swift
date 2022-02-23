@@ -71,6 +71,6 @@ struct StockView: View {
 
 struct StockView_Previews: PreviewProvider {
     static var previews: some View {
-        StockView(viewModel: .init(useCase: StockViewUseCaseImpl(repository: StockRepositoryImpl.shared)))
+        StockView(viewModel: .init(useCase: StockPreViewUseCaseImpl(repository: StockRepositoryImpl.shared)))
     }
 }

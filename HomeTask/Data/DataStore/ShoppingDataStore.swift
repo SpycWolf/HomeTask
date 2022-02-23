@@ -13,6 +13,7 @@ protocol ShoppingDataStore {
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
+    func purchase(id: UUID, purchased: Bool)
 }
 
 struct ShoppingDataStoreImpl: ShoppingDataStore {
@@ -34,6 +35,10 @@ struct ShoppingDataStoreImpl: ShoppingDataStore {
     
     func decrement(id: UUID) {
         ShoppingEntity.decrement(id: id)
+    }
+    
+    func purchase(id: UUID, purchased: Bool) {
+        ShoppingEntity.purchase(id: id, purchased: purchased)
     }
     
 }

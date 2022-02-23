@@ -26,7 +26,7 @@ struct HomeTaskApp: App {
                     .tabItem {
                         Image(systemName: "checklist")
                     }
-                ShoppingView()
+                ShoppingView(viewModel: .init(useCase: ShoppingViewUseCaseImpl(repository: ShoppingRepositoryImpl.shared)))
                     .tabItem {
                         Image(systemName: "cart")
                     }
