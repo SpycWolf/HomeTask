@@ -11,13 +11,25 @@ import SwiftUI
 struct HomeTaskApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let persistenceController = PersistenceController.shared
-
+    
+    init() {
+        let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+    }
+    
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            TabView {
                 StockView(viewModel: .init())
-//                    .environment(\.managedObjectContext,
-//                                  persistenceController.container.viewContext)
+                    .tabItem {
+                        Image(systemName: "checklist")
+                    }
+                ShoppingView()
+                    .tabItem {
+                        Image(systemName: "cart")
+                    }
             }
         }
     }
