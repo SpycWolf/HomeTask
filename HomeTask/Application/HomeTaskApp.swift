@@ -22,7 +22,7 @@ struct HomeTaskApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                StockView(viewModel: .init())
+                StockView(viewModel: .init(useCase: StockViewUseCaseImpl(repository: StockRepositoryImpl.shared)))
                     .tabItem {
                         Image(systemName: "checklist")
                     }

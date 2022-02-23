@@ -23,7 +23,7 @@ struct StockView: View {
                     StockRowView(stock: stock,
                                  incrementAction: { viewModel.increment(stock: stock) },
                                  decrementAction: { viewModel.decrement(stock: stock) },
-                                 addBagAction: viewModel.addBag)
+                                 addBagAction: { viewModel.addCart(stock: stock) })
                         .onTapGesture {
                             stockData = stock
                             isPresentingNewScrumView = true
@@ -71,6 +71,6 @@ struct StockView: View {
 
 struct StockView_Previews: PreviewProvider {
     static var previews: some View {
-        StockView(viewModel: .init())
+        StockView(viewModel: .init(useCase: StockViewUseCaseImpl(repository: StockRepositoryImpl.shared)))
     }
 }

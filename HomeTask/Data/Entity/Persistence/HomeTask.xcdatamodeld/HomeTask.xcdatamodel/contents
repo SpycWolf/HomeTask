@@ -18,6 +18,6 @@
     </entity>
     <elements>
         <element name="StockEntity" positionX="-54" positionY="-54" width="128" height="148"/>
-        <element name="ShoppingEntity" positionX="199.125" positionY="-26.72265625" width="128" height="118"/>
+        <element name="ShoppingEntity" positionX="212.8984375" positionY="-32.40625" width="128" height="103"/>
     </elements>
 </model>

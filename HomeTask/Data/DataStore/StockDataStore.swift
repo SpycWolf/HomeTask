@@ -8,38 +8,43 @@
 import Foundation
 
 protocol StockDataStore {
-    func fetchAllStocks() -> [StockEntity]
+    func fetchAll() -> [StockEntity]
+    func fetch(by id: UUID) -> StockEntity?
     func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double)
-    func deleteStock(id: UUID)
-    func incrementAmount(id: UUID)
-    func decrementAmount(id: UUID)
+    func delete(id: UUID)
+    func increment(id: UUID)
+    func decrement(id: UUID)
 }
 
 struct StockDataStoreImpl: StockDataStore {
-    func fetchAllStocks() -> [StockEntity] {
-        return StockEntity.fetchAll()
+    func fetchAll() -> [StockEntity] {
+        StockEntity.fetchAll()
+    }
+    
+    func fetch(by id: UUID) -> StockEntity? {
+        StockEntity.find(by: id)
     }
     
     func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double) {
         StockEntity.createOrUpdate(id: id, title: title, memo: memo, amount: amount, limit: limit)
     }
 
-    func deleteStock(id: UUID) {
-        StockEntity.deleteStock(id: id)
+    func delete(id: UUID) {
+        StockEntity.delete(id: id)
     }
     
-    func incrementAmount(id: UUID) {
+    func increment(id: UUID) {
         StockEntity.increment(id: id)
     }
     
-    func decrementAmount(id: UUID) {
+    func decrement(id: UUID) {
         StockEntity.decrement(id: id)
     }
 
 }
 
 struct StockDataStoreFactory {
-    static func createStockDataStore() -> StockDataStore {
+    static func dataStore() -> StockDataStore {
         StockDataStoreImpl()
     }
 }

@@ -5,21 +5,24 @@
 //  Created by spycwolf on 2022/02/14.
 //
 
-import Foundation
 import CoreData
 import SwiftUI
 
 class StockViewModel: ObservableObject {
     @Published var stocks: [StockModel] = []
+
+    let useCase: StockViewUseCase
     
-    private let useCase: StockUseCase = StockUseCaseImpl(repository: StockRepositoryImpl.shared)
+    init(useCase: StockViewUseCase) {
+        self.useCase = useCase
+    }
     
     func onAppear() {
         fetchStocks()
     }
     
     func newStock() -> StockModel {
-        StockModel()
+        useCase.newStock()
     }
     
     func add(stock: StockModel) {
@@ -43,8 +46,8 @@ class StockViewModel: ObservableObject {
         fetchStocks()
     }
     
-    func addBag() {
-        print("called addBag")
+    func addCart(stock: StockModel) {
+        useCase.addCart(id: UUID(), amount: 1, stockId: stock.id)
     }
     
     private func fetchStocks() {

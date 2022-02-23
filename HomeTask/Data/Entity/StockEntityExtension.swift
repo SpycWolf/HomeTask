@@ -41,7 +41,7 @@ extension StockEntity {
         }
     }
     
-    static func deleteStock(id: UUID) {
+    static func delete(id: UUID) {
         guard let stock = find(by: id) else { return }
         context.delete(stock)
         save()
