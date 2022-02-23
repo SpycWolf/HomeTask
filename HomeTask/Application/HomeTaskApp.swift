@@ -2,7 +2,7 @@
 //  HomeTaskApp.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/12.
+//  Created by spycwolf on 2022/02/12.
 //
 
 import SwiftUI
@@ -22,7 +22,7 @@ struct HomeTaskApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                StockView(viewModel: .init())
+                StockView(viewModel: .init(useCase: StockViewUseCaseImpl(repository: StockRepositoryImpl.shared)))
                     .tabItem {
                         Image(systemName: "checklist")
                     }

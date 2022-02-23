@@ -2,21 +2,25 @@
 //  StockUseCase.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/15.
+//  Created by spycwolf on 2022/02/15.
 //
 
 import Foundation
 
-protocol StockUseCase {
+protocol StockViewUseCase {
     func stocks() -> [StockModel]
+    func newStock() -> StockModel
     func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double)
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
+    func addCart(id: UUID, amount: Int, stockId: UUID)
 }
 
-struct StockUseCaseImpl: StockUseCase {
-    let repository: StockRepository
+struct StockViewUseCaseImpl: StockViewUseCase {
+    private let repository: StockRepository
+    private let stockUseCase = StockUseCaseImpl(repository: StockRepositoryImpl.shared)
+    private let shoppingUseCase = ShoppingUseCaseImpl(repository: ShoppingRepositoryImpl.shared)
     
     init(repository: StockRepository) {
         self.repository = repository
@@ -24,6 +28,10 @@ struct StockUseCaseImpl: StockUseCase {
     
     func stocks() -> [StockModel] {
         repository.stocks().map { StockTranslator().translate($0) }
+    }
+    
+    func newStock() -> StockModel {
+        StockModel()
     }
     
     func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double) {
@@ -40,6 +48,11 @@ struct StockUseCaseImpl: StockUseCase {
     
     func decrement(id: UUID) {
         repository.decrement(id: id)
+    }
+    
+    func addCart(id: UUID, amount: Int, stockId: UUID) {
+        let stock = stockUseCase.fetch(by: stockId)
+        shoppingUseCase.addCart(id: id, amount: amount, stockId: stockId, stock: stock)
     }
 
 }

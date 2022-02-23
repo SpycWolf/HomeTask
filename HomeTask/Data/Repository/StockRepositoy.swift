@@ -2,13 +2,14 @@
 //  StockRepositoy.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/15.
+//  Created by spycwolf on 2022/02/15.
 //
 
 import Foundation
 
 protocol StockRepository: AnyObject {
     func stocks() -> [StockEntity]
+    func stock(by id: UUID) -> StockEntity
     func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double)
     func delete(id: UUID)
     func increment(id: UUID)
@@ -17,10 +18,14 @@ protocol StockRepository: AnyObject {
 
 class StockRepositoryImpl: StockRepository {
     static let shared = StockRepositoryImpl()
-    let dataStore = StockDataStoreFactory.createStockDataStore()
+    let dataStore = StockDataStoreFactory.dataStore()
     
     func stocks() -> [StockEntity] {
-        return dataStore.fetchAllStocks()
+        dataStore.fetchAll()
+    }
+    
+    func stock(by id: UUID) -> StockEntity {
+        dataStore.fetch(by: id) ?? StockEntity()
     }
     
     func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double) {
@@ -28,15 +33,15 @@ class StockRepositoryImpl: StockRepository {
     }
 
     func delete(id: UUID) {
-        dataStore.deleteStock(id: id)
+        dataStore.delete(id: id)
     }
     
     func increment(id: UUID) {
-        dataStore.incrementAmount(id: id)
+        dataStore.increment(id: id)
     }
     
     func decrement(id: UUID) {
-        dataStore.decrementAmount(id: id)
+        dataStore.decrement(id: id)
     }
 
 }

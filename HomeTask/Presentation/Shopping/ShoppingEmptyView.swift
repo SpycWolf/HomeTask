@@ -1,15 +1,15 @@
 //
-//  StockEmptyRow.swift
+//  ShoppingEmptyView.swift
 //  HomeTask
 //
-//  Created by spycwolf on 2022/02/16.
+//  Created by spycwolf on 2022/02/23.
 //
 
 import SwiftUI
 
-struct StockEmptyRow: View {
+struct ShoppingEmptyView: View {
     var body: some View {
-        Text("登録アイテムがありません")
+        Text("買い物対象アイテムがありません")
             .font(.title2)
             .fontWeight(.bold)
             .foregroundColor(.gray)
@@ -21,9 +21,9 @@ struct StockEmptyRow: View {
     }
 }
 
-struct StockEmptyRow_Previews: PreviewProvider {
+struct ShoppingEmptyView_Previews: PreviewProvider {
     static var previews: some View {
-        StockEmptyRow()
+        ShoppingEmptyView()
             .previewLayout(.fixed(width: 400, height: 250))
     }
 }

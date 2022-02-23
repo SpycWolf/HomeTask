@@ -2,7 +2,7 @@
 //  ItemList.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/13.
+//  Created by spycwolf on 2022/02/13.
 //
 
 import SwiftUI
@@ -31,27 +31,6 @@ struct StockModel: Identifiable, Codable {
         self.amount = amount
         self.limit = limit
         self.date = date
-    }
-}
-
-extension StockModel {
-    struct Data {
-        var title: String = ""
-        var memo: String = ""
-        var limit: Double = 0
-    }
-    
-    init(data: Data) {
-        id = UUID()
-        title = data.title
-        memo = data.memo
-        amount = 0
-        limit = data.limit
-        date = Date()
-    }
-    
-    var data: Data {
-        Data(title: title, memo: memo, limit: limit)
     }
 }
 

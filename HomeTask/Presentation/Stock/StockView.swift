@@ -2,7 +2,7 @@
 //  MainView.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/13.
+//  Created by spycwolf on 2022/02/13.
 //
 
 import SwiftUI
@@ -23,7 +23,7 @@ struct StockView: View {
                     StockRowView(stock: stock,
                                  incrementAction: { viewModel.increment(stock: stock) },
                                  decrementAction: { viewModel.decrement(stock: stock) },
-                                 addBagAction: viewModel.addBag)
+                                 addBagAction: { viewModel.addCart(stock: stock) })
                         .onTapGesture {
                             stockData = stock
                             isPresentingNewScrumView = true
@@ -54,6 +54,7 @@ struct StockView: View {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("保存") {
                                     viewModel.add(stock: stockData)
+                                    stockData = viewModel.newStock()
                                     isPresentingNewScrumView = false
                                 }
                             }
@@ -61,7 +62,7 @@ struct StockView: View {
                 }
             }
             .onAppear {
-                UITableView.appearance().backgroundColor = UIColor(Color.white)
+                UITableView.appearance().backgroundColor = UIColor(Color.bgwhite)
                 viewModel.onAppear()
             }
         }
@@ -70,6 +71,6 @@ struct StockView: View {
 
 struct StockView_Previews: PreviewProvider {
     static var previews: some View {
-        StockView(viewModel: .init())
+        StockView(viewModel: .init(useCase: StockViewUseCaseImpl(repository: StockRepositoryImpl.shared)))
     }
 }

@@ -2,7 +2,7 @@
 //  StockEntityExtension.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/15.
+//  Created by spycwolf on 2022/02/15.
 //
 
 import Foundation
@@ -41,7 +41,7 @@ extension StockEntity {
         }
     }
     
-    static func deleteStock(id: UUID) {
+    static func delete(id: UUID) {
         guard let stock = find(by: id) else { return }
         context.delete(stock)
         save()
@@ -89,7 +89,6 @@ extension StockEntity {
         stock.memo = memo
         stock.amount = Int16(amount)
         stock.limit = Int16(limit)
-        stock.date = Date()
         save()
     }
 
