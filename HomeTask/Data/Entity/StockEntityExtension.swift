@@ -2,7 +2,7 @@
 //  StockEntityExtension.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/15.
+//  Created by spycwolf on 2022/02/15.
 //
 
 import Foundation
@@ -89,7 +89,6 @@ extension StockEntity {
         stock.memo = memo
         stock.amount = Int16(amount)
         stock.limit = Int16(limit)
-        stock.date = Date()
         save()
     }
 

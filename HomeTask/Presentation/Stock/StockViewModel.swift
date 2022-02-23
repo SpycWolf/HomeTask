@@ -2,7 +2,7 @@
 //  StockViewModel.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/14.
+//  Created by spycwolf on 2022/02/14.
 //
 
 import Foundation

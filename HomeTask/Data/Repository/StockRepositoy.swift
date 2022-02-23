@@ -2,7 +2,7 @@
 //  StockRepositoy.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/15.
+//  Created by spycwolf on 2022/02/15.
 //
 
 import Foundation

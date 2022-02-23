@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ShoppingEntity" representedClassName="ShoppingEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="stockId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="stock" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StockEntity" inverseName="shopping" inverseEntity="StockEntity"/>
+    </entity>
     <entity name="StockEntity" representedClassName="StockEntity" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -7,8 +14,10 @@
         <attribute name="limit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="memo" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="shopping" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShoppingEntity" inverseName="stock" inverseEntity="ShoppingEntity"/>
     </entity>
     <elements>
-        <element name="StockEntity" positionX="-63" positionY="-9" width="128" height="133"/>
+        <element name="StockEntity" positionX="-54" positionY="-54" width="128" height="148"/>
+        <element name="ShoppingEntity" positionX="199.125" positionY="-26.72265625" width="128" height="118"/>
     </elements>
 </model>

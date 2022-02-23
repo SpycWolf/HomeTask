@@ -2,7 +2,7 @@
 //  MainListView.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/13.
+//  Created by spycwolf on 2022/02/13.
 //
 
 import SwiftUI
@@ -73,7 +73,8 @@ struct StockRowView: View {
             .buttonStyle(.borderless)
         }
         .padding()
-        .background(warning ? Color.yellow : Color.bgwhite)
+        .background(warning ? Color.yellow : Color.white)
+        .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
         .listRowInsets(EdgeInsets(top: 8,
                                   leading: 0,

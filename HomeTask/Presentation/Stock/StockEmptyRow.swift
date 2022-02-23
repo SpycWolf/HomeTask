@@ -2,7 +2,7 @@
 //  StockEmptyRow.swift
 //  HomeTask
 //
-//  Created by 金子宏太 on 2022/02/16.
+//  Created by spycwolf on 2022/02/16.
 //
 
 import SwiftUI
