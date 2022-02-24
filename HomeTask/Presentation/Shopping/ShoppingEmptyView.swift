@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShoppingEmptyView: View {
     var body: some View {
-        Text("買い物対象アイテムがありません")
+        Text("stockEmptyLabel")
             .font(.title2)
             .fontWeight(.bold)
             .foregroundColor(.gray)

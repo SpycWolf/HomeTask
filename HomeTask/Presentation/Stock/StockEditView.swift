@@ -13,24 +13,24 @@ struct StockEditView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("品名")
+                Text("stockTitle")
                     .font(.system(size: 18))
                 Image(systemName: "asterisk")
                     .foregroundColor(.red)
                     .font(.system(size: 10))
                 Spacer()
             }
-            TextField("品名", text: $stock.title)
+            TextField("stockTitle", text: $stock.title)
                 .font(.system(size: 16))
                 .padding()
                 .background(Color.bgwhite)
                 .cornerRadius(10)
             Divider()
                 .padding()
-            Text("メモ")
+            Text("stockMemo")
                 .font(.system(size: 18))
                 .leftAligned()
-            TextField("メモ", text: $stock.memo)
+            TextField("stockMemo", text: $stock.memo)
                 .font(.system(size: 16))
                 .padding()
                 .background(Color.bgwhite)
@@ -38,7 +38,7 @@ struct StockEditView: View {
             Divider()
                 .padding()
             HStack {
-                Text("アラート設定")
+                Text("stockAlert")
                     .font(.system(size: 18))
                 Image(systemName: "asterisk")
                     .foregroundColor(.red)
@@ -47,7 +47,7 @@ struct StockEditView: View {
             }
             HStack {
                 Slider(value: $stock.limit, in: 0...10, step: 1) {
-                    Text("アラート")
+                    Text("stockAlert")
                 }
                 .padding()
                 Spacer()
@@ -68,6 +68,7 @@ struct StockEditView: View {
 
 struct StockEditView_Previews: PreviewProvider {
     static var previews: some View {
+        StockEditView(stock: .constant(StockModel()))
         StockEditView(stock: .constant(StockModel.sample()[0]))
     }
 }

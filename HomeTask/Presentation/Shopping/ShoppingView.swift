@@ -31,13 +31,13 @@ struct ShoppingView: View {
                     viewModel.deleteItem(indexSet: indexSet)
                 }
             }
-            .navigationTitle("買い物一覧")
+            .navigationTitle("shoppingViewTitle")
             .toolbar {
                 if !viewModel.items.isEmpty {
                     Button(action: {
                         isPresentingActionSheet = true
                     }) {
-                        Text("購入済みを削除")
+                        Text("shoppingViewDelete")
                     }
                 }
             }
@@ -46,12 +46,12 @@ struct ShoppingView: View {
                 viewModel.onAppear()
             }
             .actionSheet(isPresented: $isPresentingActionSheet) {
-                ActionSheet(title: Text("購入した数量をストックに反映しますか？"),
+                ActionSheet(title: Text("shoppingViewConfirm"),
                             buttons: [
-                                .default(Text("ストックに反映して削除")) {
+                                .default(Text("confirmReflect")) {
                                     viewModel.deleteAndReflect()
                                 },
-                                .destructive(Text("削除だけ行う")) {
+                                .destructive(Text("confirmDelete")) {
                                     viewModel.deleteItems()
                                 },
                                 .cancel()

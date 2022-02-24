@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StockEmptyView: View {
     var body: some View {
-        Text("登録アイテムがありません")
+        Text("stockEmptyLabel")
             .font(.title2)
             .fontWeight(.bold)
             .foregroundColor(.gray)

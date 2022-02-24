@@ -33,7 +33,7 @@ struct StockView: View {
                     viewModel.deleteStock(indexSet: indexSet)
                 }
             }
-            .navigationTitle("ストック一覧")
+            .navigationTitle("stockViewTitle")
             .toolbar {
                 Button(action: {
                     isPresentingNewScrumView = true
@@ -46,13 +46,13 @@ struct StockView: View {
                     StockEditView(stock: $stockData)
                         .toolbar {
                             ToolbarItem(placement: .cancellationAction) {
-                                Button("閉じる") {
+                                Button("ButtonClose") {
                                     isPresentingNewScrumView = false
                                     stockData = viewModel.newStock()
                                 }
                             }
                             ToolbarItem(placement: .confirmationAction) {
-                                Button("保存") {
+                                Button("ButtonSave") {
                                     viewModel.add(stock: stockData)
                                     stockData = viewModel.newStock()
                                     isPresentingNewScrumView = false
