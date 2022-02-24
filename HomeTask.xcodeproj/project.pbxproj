@@ -21,6 +21,7 @@
 		E31D481427C60FDD0025A1DB /* ShoppingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D481327C60FDD0025A1DB /* ShoppingUseCase.swift */; };
 		E31D481627C611690025A1DB /* StockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D481527C611690025A1DB /* StockUseCase.swift */; };
 		E35908E527C7427A0045ABEB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E35908E727C7427A0045ABEB /* Localizable.strings */; };
+		E366CB1A27C77E09001E7C5A /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E366CB1927C77E09001E7C5A /* Snackbar.swift */; };
 		E36B59FF27B8AD9500224BD7 /* StockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B59FE27B8AD9500224BD7 /* StockView.swift */; };
 		E36B5A0227B8ADFA00224BD7 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B5A0127B8ADFA00224BD7 /* StockModel.swift */; };
 		E36B5A0427B9E30300224BD7 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B5A0327B9E30300224BD7 /* StockViewModel.swift */; };
@@ -76,6 +77,7 @@
 		E31D481327C60FDD0025A1DB /* ShoppingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingUseCase.swift; sourceTree = "<group>"; };
 		E31D481527C611690025A1DB /* StockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockUseCase.swift; sourceTree = "<group>"; };
 		E35908E627C7427A0045ABEB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E366CB1927C77E09001E7C5A /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		E36B59FE27B8AD9500224BD7 /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
 		E36B5A0127B8ADFA00224BD7 /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 		E36B5A0327B9E30300224BD7 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
@@ -88,7 +90,7 @@
 		E36B5A2527BC907000224BD7 /* StockEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockEmptyView.swift; sourceTree = "<group>"; };
 		E36B5A2727BC933C00224BD7 /* StockEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockEditView.swift; sourceTree = "<group>"; };
 		E36B5A2A27BC947300224BD7 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
-		E3FF5C2027B7811100B21B90 /* ストックタスク.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ストックタスク.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3FF5C2027B7811100B21B90 /* HomeTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FF5C2327B7811100B21B90 /* HomeTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTaskApp.swift; sourceTree = "<group>"; };
 		E3FF5C2727B7811100B21B90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3FF5C2A27B7811100B21B90 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 				E31D481527C611690025A1DB /* StockUseCase.swift */,
 			);
 			path = Atomic;
+			sourceTree = "<group>";
+		};
+		E366CB1827C77DE0001E7C5A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E366CB1927C77E09001E7C5A /* Snackbar.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E36B5A0027B8ADD300224BD7 /* Application */ = {
@@ -243,7 +253,7 @@
 		E3FF5C2127B7811100B21B90 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E3FF5C2027B7811100B21B90 /* ストックタスク.app */,
+				E3FF5C2027B7811100B21B90 /* HomeTask.app */,
 				E3FF5C3527B7811200B21B90 /* HomeTaskTests.xctest */,
 				E3FF5C3F27B7811200B21B90 /* HomeTaskUITests.xctest */,
 			);
@@ -310,6 +320,7 @@
 		E3FF5C5427B89AD900B21B90 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E366CB1827C77DE0001E7C5A /* Extension */,
 				E31D47FB27C4D9BD0025A1DB /* Shopping */,
 				E3FF5C5727B89B7700B21B90 /* Stock */,
 				E36B5A2927BC945600224BD7 /* ViewModifier */,
@@ -356,7 +367,7 @@
 			);
 			name = HomeTask;
 			productName = HomeTask;
-			productReference = E3FF5C2027B7811100B21B90 /* ストックタスク.app */;
+			productReference = E3FF5C2027B7811100B21B90 /* HomeTask.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E3FF5C3427B7811200B21B90 /* HomeTaskTests */ = {
@@ -477,6 +488,7 @@
 				E31D481427C60FDD0025A1DB /* ShoppingUseCase.swift in Sources */,
 				E36B5A1227BB496600224BD7 /* StockViewUseCase.swift in Sources */,
 				E31D481627C611690025A1DB /* StockUseCase.swift in Sources */,
+				E366CB1A27C77E09001E7C5A /* Snackbar.swift in Sources */,
 				E36B5A2827BC933C00224BD7 /* StockEditView.swift in Sources */,
 				E31D480127C5FBD80025A1DB /* ShoppingEmptyView.swift in Sources */,
 				E36B5A1527BB4D7B00224BD7 /* Translator.swift in Sources */,
@@ -598,6 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ストックタスク";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -653,6 +666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ストックタスク";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -687,7 +701,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.me.StockTask;
-				PRODUCT_NAME = "ストックタスク";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -719,7 +733,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.me.StockTask;
-				PRODUCT_NAME = "ストックタスク";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

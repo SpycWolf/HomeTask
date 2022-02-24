@@ -33,11 +33,22 @@ struct ShoppingView: View {
             }
             .navigationTitle("shoppingViewTitle")
             .toolbar {
-                if !viewModel.items.isEmpty {
-                    Button(action: {
-                        isPresentingActionSheet = true
-                    }) {
-                        Text("shoppingViewDelete")
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if !viewModel.items.isEmpty {
+                        Button(action: {
+                            isPresentingActionSheet = true
+                        }) {
+                            Image(systemName: "tray.and.arrow.down")
+                        }
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    if !viewModel.items.isEmpty {
+                        Button(action: {
+                            shareAction()
+                        }) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
                     }
                 }
             }
@@ -59,6 +70,15 @@ struct ShoppingView: View {
             }
         }
     }
+    
+    private func shareAction() {
+        let activityController = UIActivityViewController(activityItems: [viewModel.shareItems()], applicationActivities: nil)
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let rootViewController = windowScene?.keyWindow?.rootViewController
+        rootViewController?.present(activityController, animated: true, completion: nil)
+    }
+    
 }
 
 struct ShoppingView_Previews: PreviewProvider {

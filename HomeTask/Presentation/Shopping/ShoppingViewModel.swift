@@ -28,17 +28,21 @@ class ShoppingViewModel: ObservableObject {
     }
     
     func deleteItems() {
-        useCase.delete(ids: items.filter { $0.purchased }.map { $0.id })
+        let target = items.filter { $0.purchased }
+        guard !target.isEmpty else { return }
+        useCase.delete(ids: target.map { $0.id })
         fetchItems()
     }
     
     func deleteAndReflect() {
-        items.filter { $0.purchased }.forEach { item in
+        let target = items.filter { $0.purchased }
+        guard !target.isEmpty else { return }
+        target.forEach { item in
             useCase.updateAmount(stockId: item.stock.id, amount: item.amount)
         }
         deleteItems()
     }
-
+    
     func increment(item: ShoppingModel) {
         useCase.increment(id: item.id)
         fetchItems()
@@ -52,6 +56,18 @@ class ShoppingViewModel: ObservableObject {
     func purchase(item: ShoppingModel) {
         useCase.purchase(id: item.id, purchased: !item.purchased)
         fetchItems()
+    }
+    
+    func shareItems() -> String {
+        var shareItems = [String]()
+        items.forEach { item in
+            if item.stock.memo.isEmpty {
+                shareItems.append("\(item.stock.title): \(item.amount)")
+            } else {
+                shareItems.append("\(item.stock.title)(\(item.stock.memo)): \(item.amount)")
+            }
+        }
+        return shareItems.joined(separator: "\n")
     }
     
     private func fetchItems() {

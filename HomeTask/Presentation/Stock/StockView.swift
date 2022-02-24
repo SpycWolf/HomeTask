@@ -11,7 +11,9 @@ struct StockView: View {
     @ObservedObject var viewModel: StockViewModel
     
     @State private var isPresentingNewScrumView = false
+    @State private var showSnackBar = false
     @State private var stockData = StockModel()
+    @State private var addItem = StockModel()
     
     var body: some View {
         NavigationView {
@@ -23,7 +25,13 @@ struct StockView: View {
                     StockRowView(stock: stock,
                                  incrementAction: { viewModel.increment(stock: stock) },
                                  decrementAction: { viewModel.decrement(stock: stock) },
-                                 addBagAction: { viewModel.addCart(stock: stock) })
+                                 addBagAction: {
+                        viewModel.addCart(stock: stock)
+                        withAnimation {
+                            addItem = stock
+                            showSnackBar.toggle()
+                        }
+                    })
                         .onTapGesture {
                             stockData = stock
                             isPresentingNewScrumView = true
@@ -41,6 +49,8 @@ struct StockView: View {
                     Image(systemName: "plus")
                 }
             }
+            .snackBar(isShowing: $showSnackBar,
+                      text: Text("\(addItem.title)をカートに入れました"))
             .sheet(isPresented: $isPresentingNewScrumView) {
                 NavigationView {
                     StockEditView(stock: $stockData)
