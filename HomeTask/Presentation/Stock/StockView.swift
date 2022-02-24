@@ -50,7 +50,7 @@ struct StockView: View {
                 }
             }
             .snackBar(isShowing: $showSnackBar,
-                      text: Text("\(addItem.title)をカートに入れました"))
+                      text: Text("\(addItem.title)") + Text("stockAddItem"))
             .sheet(isPresented: $isPresentingNewScrumView) {
                 NavigationView {
                     StockEditView(stock: $stockData)

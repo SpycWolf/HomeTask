@@ -12,6 +12,7 @@
 "stockMemo"="メモ";
 "stockAlert"="最低ストック数";
 "stockEmptyLabel"="登録アイテムがありません";
+"stockAddItem"="を買い物リストに追加しました";
 
 // Shopping
 "shoppingViewTitle"="買い物一覧";
