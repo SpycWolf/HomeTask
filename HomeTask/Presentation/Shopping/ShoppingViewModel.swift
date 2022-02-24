@@ -27,6 +27,18 @@ class ShoppingViewModel: ObservableObject {
         fetchItems()
     }
     
+    func deleteItems() {
+        useCase.delete(ids: items.filter { $0.purchased }.map { $0.id })
+        fetchItems()
+    }
+    
+    func deleteAndReflect() {
+        items.filter { $0.purchased }.forEach { item in
+            useCase.updateAmount(stockId: item.stock.id, amount: item.amount)
+        }
+        deleteItems()
+    }
+
     func increment(item: ShoppingModel) {
         useCase.increment(id: item.id)
         fetchItems()
@@ -45,4 +57,5 @@ class ShoppingViewModel: ObservableObject {
     private func fetchItems() {
         items = useCase.items()
     }
+    
 }

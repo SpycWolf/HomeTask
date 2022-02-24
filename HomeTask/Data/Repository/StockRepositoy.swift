@@ -14,6 +14,7 @@ protocol StockRepository: AnyObject {
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
+    func updateAmount(id: UUID, amount: Int)
 }
 
 class StockRepositoryImpl: StockRepository {
@@ -44,4 +45,8 @@ class StockRepositoryImpl: StockRepository {
         dataStore.decrement(id: id)
     }
 
+    func updateAmount(id: UUID, amount: Int) {
+        dataStore.updateAmount(id: id, amount: amount)
+    }
+    
 }

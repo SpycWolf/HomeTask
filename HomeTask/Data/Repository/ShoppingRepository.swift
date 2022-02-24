@@ -9,8 +9,9 @@ import Foundation
 
 protocol ShoppingRepository: AnyObject {
     func items() -> [ShoppingEntity]
-    func createOrUpdate(id: UUID, amount: Int, stockId: UUID, stock: StockEntity)
+    func createOrUpdate(amount: Int, stockId: UUID, stock: StockEntity)
     func delete(id: UUID)
+    func delete(ids: [UUID])
     func increment(id: UUID)
     func decrement(id: UUID)
     func purchase(id: UUID, purchased: Bool)
@@ -24,12 +25,16 @@ class ShoppingRepositoryImpl: ShoppingRepository {
         dataStore.fetchAll()
     }
     
-    func createOrUpdate(id: UUID, amount: Int, stockId: UUID, stock: StockEntity) {
-        dataStore.createOrUpdate(id: id, amount: amount, stockId: stockId, stock: stock)
+    func createOrUpdate(amount: Int, stockId: UUID, stock: StockEntity) {
+        dataStore.createOrUpdate(amount: amount, stockId: stockId, stock: stock)
     }
 
     func delete(id: UUID) {
         dataStore.delete(id: id)
+    }
+    
+    func delete(ids: [UUID]) {
+        dataStore.delete(ids: ids)
     }
     
     func increment(id: UUID) {

@@ -59,6 +59,12 @@ extension StockEntity {
         save()
     }
     
+    static func updateAmount(id: UUID, amount: Int) {
+        guard let stock = find(by: id) else { return }
+        stock.amount += Int16(amount)
+        save()
+    }
+    
     static func createOrUpdate(id: UUID, title: String, memo: String, amount: Int, limit: Double) {
         if find(by: id) != nil {
             update(id: id, title: title, memo: memo, amount: amount, limit: limit)

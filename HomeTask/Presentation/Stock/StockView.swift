@@ -17,7 +17,7 @@ struct StockView: View {
         NavigationView {
             List {
                 if viewModel.stocks.isEmpty {
-                    StockEmptyRow()
+                    StockEmptyView()
                 }
                 ForEach($viewModel.stocks) { $stock in
                     StockRowView(stock: stock,

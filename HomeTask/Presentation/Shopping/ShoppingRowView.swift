@@ -57,14 +57,10 @@ struct ShoppingRowView: View {
                 }
                 .buttonStyle(.borderless)
             }
-            .padding(EdgeInsets(top: 0,
-                                leading: 0,
-                                bottom: 0,
-                                trailing: 16))
             Button(action: purchaseAction) {
                 Image(systemName: "checkmark.circle")
                     .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(item.purchased ? .green : .gray)
+                    .foregroundColor(item.purchased ? .goGreen : .gray)
             }
             .buttonStyle(.borderless)
         }

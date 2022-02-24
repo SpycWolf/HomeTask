@@ -9,11 +9,12 @@ import Foundation
 
 protocol ShoppingViewUseCase {
     func items() -> [ShoppingModel]
-    func createOrUpdate(id: UUID, amount: Int, stockId: UUID)
     func delete(id: UUID)
+    func delete(ids: [UUID])
     func increment(id: UUID)
     func decrement(id: UUID)
     func purchase(id: UUID, purchased: Bool)
+    func updateAmount(stockId: UUID, amount: Int)
 }
 
 struct ShoppingViewUseCaseImpl: ShoppingViewUseCase {
@@ -28,13 +29,12 @@ struct ShoppingViewUseCaseImpl: ShoppingViewUseCase {
         repository.items().map { ShoppingTranslator().translate($0) }
     }
     
-    func createOrUpdate(id: UUID, amount: Int, stockId: UUID) {
-        let stock = stockUseCase.fetch(by: id)
-        repository.createOrUpdate(id: id, amount: amount, stockId: stockId, stock: stock)
-    }
-    
     func delete(id: UUID) {
         repository.delete(id: id)
+    }
+    
+    func delete(ids: [UUID]) {
+        repository.delete(ids: ids)
     }
     
     func increment(id: UUID) {
@@ -47,6 +47,10 @@ struct ShoppingViewUseCaseImpl: ShoppingViewUseCase {
     
     func purchase(id: UUID, purchased: Bool) {
         repository.purchase(id: id, purchased: purchased)
+    }
+    
+    func updateAmount(stockId: UUID, amount: Int) {
+        stockUseCase.updateAmount(id: stockId, amount: amount)
     }
 }
 
@@ -62,13 +66,12 @@ struct ShoppingPreViewUseCaseImpl: ShoppingViewUseCase {
         ShoppingModel.sample()
     }
     
-    func createOrUpdate(id: UUID, amount: Int, stockId: UUID) {
-        let stock = stockUseCase.fetch(by: id)
-        repository.createOrUpdate(id: id, amount: amount, stockId: stockId, stock: stock)
-    }
-    
     func delete(id: UUID) {
         repository.delete(id: id)
+    }
+    
+    func delete(ids: [UUID]) {
+        repository.delete(ids: ids)
     }
     
     func increment(id: UUID) {
@@ -81,5 +84,9 @@ struct ShoppingPreViewUseCaseImpl: ShoppingViewUseCase {
     
     func purchase(id: UUID, purchased: Bool) {
         repository.purchase(id: id, purchased: purchased)
+    }
+    
+    func updateAmount(stockId: UUID, amount: Int) {
+        stockUseCase.updateAmount(id: stockId, amount: amount)
     }
 }

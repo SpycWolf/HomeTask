@@ -47,7 +47,7 @@ class StockViewModel: ObservableObject {
     }
     
     func addCart(stock: StockModel) {
-        useCase.addCart(id: UUID(), amount: 1, stockId: stock.id)
+        useCase.addCart(amount: 1, stockId: stock.id)
     }
     
     private func fetchStocks() {
