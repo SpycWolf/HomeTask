@@ -23,9 +23,19 @@ extension ShoppingEntity {
     }
 
     
-    static func find(by id: UUID) -> ShoppingEntity? {
+    static func find(id: UUID) -> ShoppingEntity? {
         let request = NSFetchRequest<ShoppingEntity>(entityName: "ShoppingEntity")
         request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        do {
+            return try context.fetch(request).first
+        } catch {
+            fatalError()
+        }
+    }
+    
+    static func find(stockId: UUID) -> ShoppingEntity? {
+        let request = NSFetchRequest<ShoppingEntity>(entityName: "ShoppingEntity")
+        request.predicate = NSPredicate(format: "stockId == %@", stockId as CVarArg)
         do {
             return try context.fetch(request).first
         } catch {
@@ -42,32 +52,41 @@ extension ShoppingEntity {
     }
     
     static func delete(id: UUID) {
-        guard let item = find(by: id) else { return }
+        guard let item = find(id: id) else { return }
         context.delete(item)
         save()
     }
     
+    static func delete(ids: [UUID]) {
+        ids.forEach { id in
+            if let item = find(id: id) {
+                context.delete(item)
+                save()
+            }
+        }
+    }
+    
     static func increment(id: UUID) {
-        guard let item = find(by: id) else { return }
+        guard let item = find(id: id) else { return }
         item.amount += 1
         save()
     }
     
     static func decrement(id: UUID) {
-        guard let item = find(by: id), item.amount > 0 else { return }
+        guard let item = find(id: id), item.amount > 0 else { return }
         item.amount -= 1
         save()
     }
     
     static func purchase(id: UUID, purchased: Bool) {
-        guard let item = find(by: id), item.amount > 0 else { return }
+        guard let item = find(id: id), item.amount > 0 else { return }
         item.purchased = purchased
         save()
     }
     
-    static func createOrUpdate(id: UUID, amount: Int, stockId: UUID, stock: StockEntity) {
-        if find(by: id) != nil {
-            update(id: id, amount: amount, stockId: stockId, stock: stock)
+    static func createOrUpdate(amount: Int, stockId: UUID, stock: StockEntity) {
+        if let item = find(stockId: stockId) {
+            update(shopping: item, amount: amount, stockId: stockId, stock: stock)
         } else {
             newShopping(amount: amount, stockId: stockId, stock: stock)
         }
@@ -89,8 +108,7 @@ extension ShoppingEntity {
         }
     }
     
-    static private func update(id: UUID, amount: Int, stockId: UUID, stock: StockEntity) {
-        guard let shopping = find(by: id) else { return }
+    static private func update(shopping: ShoppingEntity, amount: Int, stockId: UUID, stock: StockEntity) {
         shopping.amount = Int16(amount)
         shopping.stockId = stockId
         shopping.stock = stock

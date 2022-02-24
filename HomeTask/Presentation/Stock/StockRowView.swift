@@ -61,10 +61,6 @@ struct StockRowView: View {
                 }
                 .buttonStyle(.borderless)
             }
-            .padding(EdgeInsets(top: 0,
-                                leading: 0,
-                                bottom: 0,
-                                trailing: 16))
             Button(action: addBagAction) {
                 Image(systemName: "bag.badge.plus")
                     .font(.system(size: 24, weight: .bold))

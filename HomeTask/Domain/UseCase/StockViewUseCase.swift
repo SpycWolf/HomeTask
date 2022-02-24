@@ -14,7 +14,7 @@ protocol StockViewUseCase {
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
-    func addCart(id: UUID, amount: Int, stockId: UUID)
+    func addCart(amount: Int, stockId: UUID)
 }
 
 struct StockViewUseCaseImpl: StockViewUseCase {
@@ -50,9 +50,9 @@ struct StockViewUseCaseImpl: StockViewUseCase {
         repository.decrement(id: id)
     }
     
-    func addCart(id: UUID, amount: Int, stockId: UUID) {
+    func addCart(amount: Int, stockId: UUID) {
         let stock = stockUseCase.fetch(by: stockId)
-        shoppingUseCase.addCart(id: id, amount: amount, stockId: stockId, stock: stock)
+        shoppingUseCase.addCart(amount: amount, stockId: stockId, stock: stock)
     }
 
 }
@@ -90,9 +90,9 @@ struct StockPreViewUseCaseImpl: StockViewUseCase {
         repository.decrement(id: id)
     }
     
-    func addCart(id: UUID, amount: Int, stockId: UUID) {
+    func addCart(amount: Int, stockId: UUID) {
         let stock = stockUseCase.fetch(by: stockId)
-        shoppingUseCase.addCart(id: id, amount: amount, stockId: stockId, stock: stock)
+        shoppingUseCase.addCart(amount: amount, stockId: stockId, stock: stock)
     }
 
 }

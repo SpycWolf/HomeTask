@@ -14,6 +14,7 @@ protocol StockDataStore {
     func delete(id: UUID)
     func increment(id: UUID)
     func decrement(id: UUID)
+    func updateAmount(id: UUID, amount: Int)
 }
 
 struct StockDataStoreImpl: StockDataStore {
@@ -39,6 +40,10 @@ struct StockDataStoreImpl: StockDataStore {
     
     func decrement(id: UUID) {
         StockEntity.decrement(id: id)
+    }
+    
+    func updateAmount(id: UUID, amount: Int) {
+        StockEntity.updateAmount(id: id, amount: amount)
     }
 
 }
