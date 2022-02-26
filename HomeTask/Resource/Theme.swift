@@ -12,4 +12,6 @@ extension Color {
     static let paleAle = Color("paleAle")
     static let antiqueLace = Color("antiqueLace")
     static let blueHijab = Color("blueHijab")
+    static let goGreen = Color("goGreen")
+    static let lead = Color("lead")
 }

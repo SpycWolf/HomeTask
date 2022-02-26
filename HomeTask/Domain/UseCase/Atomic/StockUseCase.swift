@@ -9,6 +9,7 @@ import Foundation
 
 protocol StockUseCase {
     func fetch(by id: UUID) -> StockEntity
+    func updateAmount(id: UUID, amount: Int)
 }
 
 struct StockUseCaseImpl: StockUseCase {
@@ -21,4 +22,9 @@ struct StockUseCaseImpl: StockUseCase {
     func fetch(by id: UUID) -> StockEntity {
         repository.stock(by: id)
     }
+    
+    func updateAmount(id: UUID, amount: Int) {
+        repository.updateAmount(id: id, amount: amount)
+    }
+    
 }

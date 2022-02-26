@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct StockEmptyRow: View {
+struct StockEmptyView: View {
     var body: some View {
-        Text("登録アイテムがありません")
+        Text("stockEmptyLabel")
             .font(.title2)
             .fontWeight(.bold)
             .foregroundColor(.gray)
@@ -23,7 +23,7 @@ struct StockEmptyRow: View {
 
 struct StockEmptyRow_Previews: PreviewProvider {
     static var previews: some View {
-        StockEmptyRow()
+        StockEmptyView()
             .previewLayout(.fixed(width: 400, height: 250))
     }
 }

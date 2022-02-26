@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ShoppingUseCase {
-    func addCart(id: UUID, amount: Int, stockId: UUID, stock: StockEntity)
+    func addCart(amount: Int, stockId: UUID, stock: StockEntity)
 }
 
 struct ShoppingUseCaseImpl: ShoppingUseCase {
@@ -18,7 +18,7 @@ struct ShoppingUseCaseImpl: ShoppingUseCase {
         self.repository = repository
     }
     
-    func addCart(id: UUID, amount: Int, stockId: UUID, stock: StockEntity) {
-        repository.createOrUpdate(id: id, amount: amount, stockId: stockId, stock: stock)
+    func addCart(amount: Int, stockId: UUID, stock: StockEntity) {
+        repository.createOrUpdate(amount: amount, stockId: stockId, stock: stock)
     }
 }
