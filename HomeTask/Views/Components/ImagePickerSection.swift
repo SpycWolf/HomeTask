@@ -14,8 +14,14 @@ struct ImagePickerSection: View {
     var existingImageData: Data?
     var onRemove: (() -> Void)?
     
+    @State private var showingCamera = false
+    
     private var displayImageData: Data? {
         selectedImageData ?? existingImageData
+    }
+    
+    private var isCameraAvailable: Bool {
+        UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     var body: some View {
@@ -36,7 +42,19 @@ struct ImagePickerSection: View {
                 .font(.caption)
             }
             
-            PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
+            Menu {
+                if isCameraAvailable {
+                    Button {
+                        showingCamera = true
+                    } label: {
+                        Label("写真を撮る", systemImage: "camera")
+                    }
+                }
+                
+                PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
+                    Label("ライブラリから選択", systemImage: "photo.on.rectangle")
+                }
+            } label: {
                 Label(
                     displayImageData == nil ? "画像を選択" : "画像を変更",
                     systemImage: "photo"
@@ -46,6 +64,10 @@ struct ImagePickerSection: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
+        .fullScreenCover(isPresented: $showingCamera) {
+            CameraImagePicker(imageData: $selectedImageData)
+                .ignoresSafeArea()
+        }
     }
 }
 

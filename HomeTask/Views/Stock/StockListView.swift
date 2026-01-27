@@ -12,8 +12,13 @@ struct StockListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var stocks: [Stock]
     
+    @AppStorage("stockViewMode") private var viewMode: String = ViewMode.list.rawValue
     @State private var sortOption: SortOption = .name
     @State private var showingAddSheet = false
+    
+    private var currentViewMode: ViewMode {
+        ViewMode(rawValue: viewMode) ?? .list
+    }
     
     private var sortedStocks: [Stock] {
         switch sortOption {
@@ -24,20 +29,33 @@ struct StockListView: View {
         }
     }
     
+    private let gridColumns = [
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12)
+    ]
+    
     var body: some View {
         NavigationStack {
             Group {
                 if stocks.isEmpty {
                     emptyStateView
                 } else {
-                    stockList
+                    switch currentViewMode {
+                    case .list:
+                        stockListView
+                    case .grid:
+                        stockGridView
+                    }
                 }
             }
             .navigationTitle("ストック一覧")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    sortMenu
+                    HStack(spacing: 16) {
+                        sortMenu
+                        viewModeButton
+                    }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -70,7 +88,7 @@ struct StockListView: View {
         }
     }
     
-    private var stockList: some View {
+    private var stockListView: some View {
         List {
             ForEach(sortedStocks) { stock in
                 NavigationLink {
@@ -80,6 +98,34 @@ struct StockListView: View {
                 }
             }
             .onDelete(perform: deleteStocks)
+        }
+    }
+    
+    private var stockGridView: some View {
+        ScrollView {
+            LazyVGrid(columns: gridColumns, spacing: 12) {
+                ForEach(sortedStocks) { stock in
+                    NavigationLink {
+                        StockDetailView(stock: stock)
+                    } label: {
+                        StockCardView(stock: stock)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding()
+        }
+        .background(AppColors.background)
+    }
+    
+    private var viewModeButton: some View {
+        Button {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                viewMode = currentViewMode == .list ? ViewMode.grid.rawValue : ViewMode.list.rawValue
+            }
+        } label: {
+            Image(systemName: currentViewMode == .list ? ViewMode.grid.icon : ViewMode.list.icon)
+                .foregroundStyle(AppColors.primary)
         }
     }
     
