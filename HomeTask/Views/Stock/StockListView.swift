@@ -8,11 +8,6 @@
 import SwiftUI
 import SwiftData
 
-enum SortOption: String, CaseIterable {
-    case name = "品名順"
-    case quantity = "個数順"
-}
-
 struct StockListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var stocks: [Stock]

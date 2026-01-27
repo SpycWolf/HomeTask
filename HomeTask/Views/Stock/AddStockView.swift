@@ -28,7 +28,10 @@ struct AddStockView: View {
             Form {
                 // 画像セクション
                 Section {
-                    imagePickerSection
+                    ImagePickerSection(
+                        selectedPhotoItem: $selectedPhotoItem,
+                        selectedImageData: $selectedImageData
+                    )
                 } header: {
                     Text("画像")
                 }
@@ -76,37 +79,6 @@ struct AddStockView: View {
                 }
             }
         }
-    }
-    
-    // MARK: - Subviews
-    
-    private var imagePickerSection: some View {
-        VStack {
-            if let imageData = selectedImageData,
-               let uiImage = UIImage(data: imageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 200)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                
-                Button("画像を削除", role: .destructive) {
-                    selectedPhotoItem = nil
-                    selectedImageData = nil
-                }
-                .font(.caption)
-            }
-            
-            PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
-                Label(
-                    selectedImageData == nil ? "画像を選択" : "画像を変更",
-                    systemImage: "photo"
-                )
-                .foregroundStyle(AppColors.primary)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 8)
     }
     
     // MARK: - Actions

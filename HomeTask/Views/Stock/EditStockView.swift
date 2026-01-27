@@ -32,7 +32,12 @@ struct EditStockView: View {
             Form {
                 // 画像セクション
                 Section {
-                    imagePickerSection
+                    ImagePickerSection(
+                        selectedPhotoItem: $selectedPhotoItem,
+                        selectedImageData: $selectedImageData,
+                        existingImageData: imageWasRemoved ? nil : stock.imageData,
+                        onRemove: { imageWasRemoved = true }
+                    )
                 } header: {
                     Text("画像")
                 }
@@ -106,45 +111,6 @@ struct EditStockView: View {
                 Text("「\(stock.name)」を削除しますか？\nこの操作は取り消せません。")
             }
         }
-    }
-    
-    // MARK: - Subviews
-    
-    private var currentImageData: Data? {
-        if imageWasRemoved {
-            return nil
-        }
-        return selectedImageData ?? stock.imageData
-    }
-    
-    private var imagePickerSection: some View {
-        VStack {
-            if let imageData = currentImageData,
-               let uiImage = UIImage(data: imageData) {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 200)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                
-                Button("画像を削除", role: .destructive) {
-                    selectedPhotoItem = nil
-                    selectedImageData = nil
-                    imageWasRemoved = true
-                }
-                .font(.caption)
-            }
-            
-            PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
-                Label(
-                    currentImageData == nil ? "画像を選択" : "画像を変更",
-                    systemImage: "photo"
-                )
-                .foregroundStyle(AppColors.primary)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 8)
     }
     
     // MARK: - Actions

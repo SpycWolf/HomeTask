@@ -11,7 +11,7 @@ import SwiftData
 @Model
 final class ShoppingList {
     var createdAt: Date
-    @Relationship
+    @Relationship(deleteRule: .nullify)
     var items: [Stock]
     
     init(items: [Stock] = [], createdAt: Date = Date()) {

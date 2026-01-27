@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct StockDetailView: View {
-    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Bindable var stock: Stock
     @State private var showingEditSheet = false
