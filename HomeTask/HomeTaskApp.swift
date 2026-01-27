@@ -13,6 +13,7 @@ struct HomeTaskApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Stock.self,
+            ShoppingList.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +26,7 @@ struct HomeTaskApp: App {
 
     var body: some Scene {
         WindowGroup {
-            StockListView()
+            MainTabView()
         }
         .modelContainer(sharedModelContainer)
     }
